@@ -1,0 +1,14 @@
+<nav class="navbar bg-primary">
+  <h1>Angular Authorization</h1>
+  <a *ngIf="auth.isAuthenticated(); else authBlock" (click)="logout($event)">Log out</a>
+  <ng-template #authBlock>
+    <ul>
+      <li routerLinkActive="active">
+        <a routerLink="register">Register</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="login">Login</a>
+      </li>
+    </ul>
+  </ng-template>
+</nav>

@@ -1,0 +1,18 @@
+<div>
+  <small *ngIf="formError.required">
+    {{formField}} must exist
+  </small>
+  <small *ngIf="formError.email">
+    Enter correct email
+  </small>
+  <small *ngIf="formError.minlength">
+    {{formField}} should contain minimum
+    {{formError.minlength.requiredLength}}
+    symbols. Currently
+    {{formError.minlength.actualLength}}
+    symbols
+  </small>
+  <small *ngIf="formError.match">
+    Passwords must match
+  </small>
+</div>

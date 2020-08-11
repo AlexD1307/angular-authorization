@@ -1,0 +1,55 @@
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  <h2>Register Page</h2>
+  <div class="alert alert-danger" *ngIf="auth.error$ | async as error">
+    {{error}}
+  </div>
+  <div
+      class="form-control"
+      [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
+  >
+    <label for="email">Email</label>
+    <input formControlName="email" type="text" id="email">
+    <app-auth-error
+        *ngIf="form.get('email').touched && form.get('email').invalid"
+        class="validation"
+        [formError]="form.get('email').errors"
+        formField="Email"
+    >
+    </app-auth-error>
+  </div>
+  <div
+      [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}"
+      class="form-control"
+  >
+    <label for="password">Password</label>
+    <input formControlName="password" type="password" id="password">
+    <app-auth-error
+        *ngIf="form.get('password').touched && form.get('password').invalid"
+        class="validation"
+        [formError]="form.get('password').errors"
+        formField="Password"
+    >
+    </app-auth-error>
+  </div>
+  <div
+      [ngClass]="{invalid: form.get('cnfPass').touched && form.get('cnfPass').invalid}"
+      class="form-control"
+  >
+    <label for="cnfPass">Repeat your password</label>
+    <input formControlName="cnfPass" type="password" id="cnfPass">
+    <app-auth-error
+      class="validation"
+      *ngIf="form.get('cnfPass').touched && form.get('cnfPass').errors"
+      [formError]="form.get('cnfPass').errors"
+      formField="Confirmation password"
+    >
+    </app-auth-error>
+  </div>
+  <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="form.invalid || submitted"
+  >
+    Register
+  </button>
+</form>
