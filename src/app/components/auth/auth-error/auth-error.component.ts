@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 export class AuthErrorComponent {
   @Input() formError;
   @Input() formField: string;
+
   constructor() { }
 }
